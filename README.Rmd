@@ -17,6 +17,44 @@ find the [documentation of Giac here](https://www-fourier.ujf-grenoble.fr/~paris
 remotes::install_github("stla/giacR")
 ```
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
+
+
+## Initialisation of a Giac session
+
+The 'chromote' package is used to create a Giac session. If the `find_chrome()` 
+function of 'chromote' returns `NULL`, you can set the path to the Chrome 
+executable (or Chromium, Brave, etc) to the environment variable 
+`CHROMOTE_CHROME`. Or you can pass it to the the `Giac$new` function. 
+Since the Chrome executable is in my system path, I can use 
+`Sys.which("chrome")`.
+
+```{r giacNew}
+library(giacR)
+giac <- Giac$new(Sys.which("chrome"))
+```
+
 ## Examples 
 
-TODO
+### Elementary calculus
+
+```{r}
+giac$execute("2 + 3/7")
+```
+
+
+### Gröbner bases
+
+```{r}
+giac$execute("gbasis([x^3 - 2*x*y, x^2*y - 2*y^2 + x], [x, y])")
+```
+
+
+### Close session
+
+```{r}
+giac$close()
+```
+
