@@ -75,6 +75,13 @@ giac$execute("crationalroot(2*x^3 - 3*x^2 + 8*x - 12)")
 ```
 
 
+### Determinant of a matrix with symbolic entries
+
+```{r}
+giac$execute("det([[1, 2, 3], [3/4, a, b], [c, 4, 5]])")
+```
+
+
 ## Close session
 
 ```{r}
