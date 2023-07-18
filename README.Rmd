@@ -11,6 +11,7 @@ Giac is a general purpose symbolic algebra software. It powers the graphical
 interface Xcas. This package allows to execute Giac commands in R. You can 
 find the [documentation of Giac here](https://www-fourier.ujf-grenoble.fr/~parisse/giac/doc/en/cascmd_en/cascmd_en.html).
 
+
 ## Installation
 
 ```r
@@ -36,6 +37,7 @@ library(giacR)
 giac <- Giac$new(Sys.which("chrome"))
 ```
 
+
 ## Examples 
 
 ### Elementary calculus
@@ -45,14 +47,35 @@ giac$execute("2 + 3/7")
 ```
 
 
-### Gröbner bases
+### Gröbner basis
 
 ```{r}
 giac$execute("gbasis([x^3 - 2*x*y, x^2*y - 2*y^2 + x], [x, y])")
 ```
 
 
-### Close session
+### Antiderivative
+
+```{r}
+giac$execute("integrate(ln(x))")
+```
+
+
+### Infinite sum
+
+```{r}
+giac$execute("sum(1/(n^2), n, 1, +(infinity))")
+```
+
+
+### Exact rational roots of a polynomial
+
+```{r}
+giac$execute("crationalroot(2*x^3 - 3*x^2 + 8*x - 12)")
+```
+
+
+## Close session
 
 ```{r}
 giac$close()
