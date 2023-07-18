@@ -1,9 +1,11 @@
 Package: giacR
-Title: What the Package Does (One Line, Title Case)
+Title: Interface to 'Giac'
 Version: 0.0.0.9000
 Authors@R: 
     person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: 'Giac' is a general purpose symbolic algebra software. It
+    powers the graphical interface 'XCas'. This package allows to execute
+    'Giac' commands in 'R'.
 License: GPL-3
 URL: https://github.com/stla/giacR
 BugReports: https://github.com/stla/giacR/issues
