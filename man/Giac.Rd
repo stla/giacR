@@ -12,7 +12,7 @@ Creates an object allowing to execute Giac commands.
 ## Method `Giac$execute`
 ## ------------------------------------------------
 
-if(!is.null(find_chrome())) {
+if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$execute("2 + 3/7")
   giac$close()
@@ -23,7 +23,7 @@ if(!is.null(find_chrome())) {
 ## ------------------------------------------------
 
 library(giacR)
-if(!is.null(find_chrome())) {
+if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$implicitization(
     equations = "x = a*cost, y = b*sint",
@@ -87,7 +87,7 @@ The result of the command in a character string.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{if(!is.null(find_chrome())) {
+\preformatted{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$execute("2 + 3/7")
   giac$close()
@@ -128,7 +128,7 @@ The implicitization of the equations.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{library(giacR)
-if(!is.null(find_chrome())) {
+if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$implicitization(
     equations = "x = a*cost, y = b*sint",
