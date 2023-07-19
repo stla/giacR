@@ -67,6 +67,15 @@ giac$execute("crationalroot(2*x^3 - 3*x^2 + 8*x - 12)")
 ## [1] "[2*i,3/2,-2*i]"
 ```
 
+### Solve a system of equations (and simplify the solutions)
+
+``` r
+giac$execute(
+  "apply(simplify, solve([x^2+y+z=1, x+y^2+z=1, x+y+z^2=1], [x, y, z]))"
+)
+## [1] "list[[0,1,0],[1,0,0],[0,0,1],[sqrt(2)-1,sqrt(2)-1,sqrt(2)-1],[-sqrt(2)-1,-sqrt(2)-1,-sqrt(2)-1]]"
+```
+
 ### Determinant of a matrix with symbolic entries
 
 ``` r
