@@ -74,6 +74,18 @@ giac$execute("det([[1, 2, 3], [3/4, a, b], [c, 4, 5]])")
 ## [1] "(-6*a*c+10*a+4*b*c-8*b+3)/2"
 ```
 
+### Check whether a variable occurs in an expression
+
+``` r
+giac$execute("has(x*y + u^2*z, u)")
+## [1] "3"
+```
+
+``` r
+giac$execute("has(x*y + u^2*z, w)")
+## [1] "0"
+```
+
 ## Close session
 
 ``` r
