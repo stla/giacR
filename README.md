@@ -3,6 +3,11 @@ The ‘giacR’ package
 
 *R interface to ‘Giac’*
 
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/stla/giacR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stla/giacR/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 ------------------------------------------------------------------------
 
 Giac is a general purpose symbolic algebra software. It powers the
