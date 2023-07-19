@@ -9,14 +9,14 @@ NULL
   no_giac       <- !.giac_is_installed()
 
   if(no_giac && (!has_internet || !fourier_is_up)) {
-    packageStartupMessage(
+    message(
       "Giac is not installed and there's no internet connection or the ",
       "website is not reachable."
     )
   }
 
   if(fourier_is_up && no_giac) {
-    packageStartupMessage("Downloading Giac.")
+    message("Downloading Giac.")
     .giac_download()
   }
 
