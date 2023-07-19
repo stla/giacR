@@ -17,5 +17,6 @@ Imports:
     chromote,
     jsonlite,
     R6
+SystemRequirements: Chromium-based browser (Google Chrome, Brave, ...)
 Encoding: UTF-8
 RoxygenNote: 7.2.3
