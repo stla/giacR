@@ -63,7 +63,7 @@ Module.onRuntimeInitialized = function() {
     #' @return The result of the command in a character string.
     #'
     #' @examples
-    #' if(!is.null(find_chrome)) {
+    #' if(!is.null(find_chrome())) {
     #'   giac <- Giac$new()
     #'   giac$execute("2 + 3/7")
     #'   giac$close()
@@ -90,7 +90,7 @@ Module.onRuntimeInitialized = function() {
     #'
     #' @examples
     #' library(giacR)
-    #' if(!is.null(find_chrome)) {
+    #' if(!is.null(find_chrome())) {
     #'   giac <- Giac$new()
     #'   giac$implicitization(
     #'     equations = "x = a*cost, y = b*sint",
