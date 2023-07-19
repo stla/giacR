@@ -87,11 +87,11 @@ The result of the command in a character string.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{if(!is.null(chromote::find_chrome())) {
+\preformatted{\donttest{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$execute("2 + 3/7")
   giac$close()
-}
+}}
 }
 \if{html}{\out{</div>}}
 
@@ -128,7 +128,7 @@ The implicitization of the equations.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{library(giacR)
-if(!is.null(chromote::find_chrome())) {
+\donttest{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$implicitization(
     equations = "x = a*cost, y = b*sint",
@@ -137,7 +137,7 @@ if(!is.null(chromote::find_chrome())) {
     constants = "a, b"
   )
   giac$close()
-}
+}}
 }
 \if{html}{\out{</div>}}
 

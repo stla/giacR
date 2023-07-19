@@ -34,7 +34,7 @@ Giac <- R6Class(
       chromote <- Chromote$new(browser = chrm)
       session  <- ChromoteSession$new(parent = chromote)
       ids <- session$Page$navigate("about:blank")
-      jsfile <- system.file("giacwasm.js", package = "giacR")
+      jsfile <- system.file("Giac", "giacwasm.js", package = "giacR")
       script <- paste0(readLines(jsfile), collapse = "\n")
       . <- session$Runtime$evaluate(script)
       . <- session$Runtime$evaluate("

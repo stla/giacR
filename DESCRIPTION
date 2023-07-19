@@ -16,7 +16,9 @@ BugReports: https://github.com/stla/giacR/issues
 Imports: 
     chromote,
     jsonlite,
-    R6
+    pingr,
+    R6,
+    utils
 SystemRequirements: Chromium-based browser (Google Chrome, Brave, ...)
 Encoding: UTF-8
 RoxygenNote: 7.2.3
