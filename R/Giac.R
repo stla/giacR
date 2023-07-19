@@ -5,6 +5,7 @@
 #' @export
 #' @importFrom R6 R6Class
 #' @import chromote
+#' @importFrom jsonlite fromJSON
 Giac <- R6Class(
   "Giac",
 
@@ -75,6 +76,62 @@ Module.onRuntimeInitialized = function() {
         stop("An error occured.")
       }
       evaluate[["result"]][["value"]]
+    },
+
+
+    #' @description Gröbner implicitization (see examples)
+    #' @param equations comma-separated equations
+    #' @param relations comma-separated relations, or an empty string if there
+    #'   is no relation
+    #' @param variables comma-separated variables
+    #' @param constants comma-separated constants, or an empty string if there
+    #'   is no constant
+    #' @return The implicitization of the equations.
+    #'
+    #' @examples
+    #' library(giacR)
+    #' if(!is.null(find_chrome)) {
+    #'   giac <- Giac$new()
+    #'   giac$implicitization(
+    #'     equations = "x = a*cost, y = b*sint",
+    #'     relations = "cost^2 + sint^2 = 1",
+    #'     variables = "cost, sint",
+    #'     constants = "a, b"
+    #'   )
+    #'   giac$close()
+    #' }
+    "implicitization" = function(
+      equations, relations = "", variables, constants = ""
+    ) {
+      if(nchar(trimws(constants)) > 0L) {
+        symbols <- paste0(variables, ", ", constants)
+      } else{
+        symbols <- variables
+      }
+      relations  <- trimws(strsplit(relations, ",")[[1L]])
+      relations  <- vapply(relations, subtraction, character(1L))
+      equations  <- trimws(strsplit(equations, ",")[[1L]])
+      generators <- paste0(c(relations, equations), collapse = ", ")
+      coordinates <- toString(vapply(equations, function(eq) {
+        trimws(strsplit(eq, "=")[[1L]][1L])
+      }, character(1L)))
+      symbols <- paste0(symbols, ", ", coordinates)
+      equations  <- paste0(
+        vapply(equations, subtraction, character(1L)), collapse = ", "
+      )
+      equations <- paste0(relations, ", ", equations)
+      body <- paste0("[", equations, "], [", symbols, "]")
+      command <- sprintf("gbasis(%s)", body)
+      gbasis <- self$execute(command)
+      variables <- trimws(strsplit(variables, ",")[[1L]])
+      command <- paste0(
+        "apply(expr -> ", paste0(vapply(variables, function(s) {
+        sprintf("has(expr, %s)==0", s)
+      }, character(1L)),
+      collapse = " and "), ", ", gbasis, ")")
+      free <- fromJSON(self$execute(command))
+      gbasis <- strsplit(sub("\\]$", "", sub("^\\[", "", gbasis)), ",")[[1L]]
+      gbasis[free]
     },
 
 

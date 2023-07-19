@@ -11,8 +11,8 @@ equations <- "x = a*cost, y = b*sint"
 relations <- "cost^2 + sint^2 = 1"
 variables <- "cost, sint"
 constants <- "a, b"
-symbols <- paste0(variables, ", ", constants)
 
+symbols <- paste0(variables, ", ", constants)
 relations  <- trimws(strsplit(relations, ",")[[1L]])
 relations  <- vapply(relations, subtraction, character(1L))
 equations  <- trimws(strsplit(equations, ",")[[1L]])

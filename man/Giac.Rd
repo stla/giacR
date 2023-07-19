@@ -17,14 +17,30 @@ if(!is.null(find_chrome)) {
   giac$execute("2 + 3/7")
   giac$close()
 }
+
+## ------------------------------------------------
+## Method `Giac$implicitization`
+## ------------------------------------------------
+
+library(giacR)
+if(!is.null(find_chrome)) {
+  giac <- Giac$new()
+  giac$implicitization(
+    equations = "x = a*cost, y = b*sint",
+    relations = "cost^2 + sint^2 = 1",
+    variables = "cost, sint",
+    constants = "a, b"
+  )
+  giac$close()
+}
 }
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-Giac-new}{\code{Giac$new()}}
 \item \href{#method-Giac-execute}{\code{Giac$execute()}}
+\item \href{#method-Giac-implicitization}{\code{Giac$implicitization()}}
 \item \href{#method-Giac-close}{\code{Giac$close()}}
-\item \href{#method-Giac-clone}{\code{Giac$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
@@ -83,6 +99,52 @@ The result of the command in a character string.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Giac-implicitization"></a>}}
+\if{latex}{\out{\hypertarget{method-Giac-implicitization}{}}}
+\subsection{Method \code{implicitization()}}{
+Gröbner implicitization (see examples)
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Giac$implicitization(equations, relations = "", variables, constants = "")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{equations}}{comma-separated equations}
+
+\item{\code{relations}}{comma-separated relations, or an empty string if there
+is no relation}
+
+\item{\code{variables}}{comma-separated variables}
+
+\item{\code{constants}}{comma-separated constants, or an empty string if there
+is no constant}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The implicitization of the equations.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{library(giacR)
+if(!is.null(find_chrome)) {
+  giac <- Giac$new()
+  giac$implicitization(
+    equations = "x = a*cost, y = b*sint",
+    relations = "cost^2 + sint^2 = 1",
+    variables = "cost, sint",
+    constants = "a, b"
+  )
+  giac$close()
+}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Giac-close"></a>}}
 \if{latex}{\out{\hypertarget{method-Giac-close}{}}}
 \subsection{Method \code{close()}}{
@@ -93,23 +155,6 @@ Close a Giac session
 
 \subsection{Returns}{
 \code{TRUE} or \code{FALSE}, whether the session has been closed.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-Giac-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-Giac-clone}{}}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Giac$clone(deep = FALSE)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
 }
 }
 }

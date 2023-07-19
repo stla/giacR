@@ -3,3 +3,4 @@
 export(Giac)
 import(chromote)
 importFrom(R6,R6Class)
+importFrom(jsonlite,fromJSON)
