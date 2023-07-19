@@ -38,6 +38,6 @@ jobs:
 
       - name: Install chromote from Github
         run: |
-          Rscript -e "remotes::install_github('stla/chromote')"
+          Rscript -e "remotes::install_url('https://github.com/rstudio/chromote/archive/refs/heads/main.zip')"
 
       - uses: r-lib/actions/check-r-package@v2
