@@ -44,10 +44,10 @@ jobs:
 
       - name: Download chromote from Github
         run: |
-          curl "https://github.com/rstudio/chromote/zipball/main/rstudio-chromote-v0.1.1-25-gf346da1.zip" -o "xx.zip"
+          curl "https://github.com/rstudio/chromote/zipball/main/rstudio-chromote-v0.1.1-25-gf346da1.zip" -o "xxx.zip"
 
       - name: Install chromote
         run: |
-          Rscript -e "remotes::install_local('xx.zip')"
+          Rscript -e "remotes::install_local('xxx.zip')"
 
       - uses: r-lib/actions/check-r-package@v2
