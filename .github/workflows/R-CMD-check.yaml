@@ -42,8 +42,12 @@ jobs:
         run: |
           Rscript -e "install.packages('remotes', repos='https://ftp.belnet.be/mirror/CRAN')"
 
-      - name: Install chromote from Github
+      - name: Download chromote from Github
         run: |
-          Rscript -e "remotes::install_url('https://github.com/rstudio/chromote/tarball/main/rstudio-chromote-v0.1.1-25-gf346da1.tar.gz')"
+          curl -L https://github.com/rstudio/chromote/tarball/main/rstudio-chromote-v0.1.1-25-gf346da1.tar.gz
+
+      - name: Install chromote
+        run: |
+          Rscript -e "remotes::install_local('rstudio-chromote-v0.1.1-25-gf346da1.tar.gz')"
 
       - uses: r-lib/actions/check-r-package@v2
