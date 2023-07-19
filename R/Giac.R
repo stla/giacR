@@ -137,9 +137,9 @@ Module.onRuntimeInitialized = function() {
     #' @description Close a Giac session
     #' @return \code{TRUE} or \code{FALSE}, whether the session has been closed.
     "close" = function() {
-      parentBrowser <- private[["session"]]$parent$get_browser()
+      parent <- private[["session"]]$parent
       . <- private[["session"]]$close()
-      success <- quiet(parentBrowser$close())
+      success <- quiet(parent$close())
       success
     }
 
