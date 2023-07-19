@@ -3,3 +3,8 @@ subtraction <- function(equality) {
   paste0(members[1L], " - (", members[2L], ")")
 }
 
+quiet <- function(x) {
+  sink(tempfile())
+  on.exit(sink())
+  invisible(force(x))
+}
