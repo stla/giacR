@@ -12,18 +12,18 @@ Creates an object allowing to execute Giac commands.
 ## Method `Giac$execute`
 ## ------------------------------------------------
 
-if(!is.null(chromote::find_chrome())) {
+\donttest{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$execute("2 + 3/7")
   giac$close()
-}
+}}
 
 ## ------------------------------------------------
 ## Method `Giac$implicitization`
 ## ------------------------------------------------
 
 library(giacR)
-if(!is.null(chromote::find_chrome())) {
+\donttest{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$implicitization(
     equations = "x = a*cost, y = b*sint",
@@ -32,7 +32,7 @@ if(!is.null(chromote::find_chrome())) {
     constants = "a, b"
   )
   giac$close()
-}
+}}
 }
 \section{Methods}{
 \subsection{Public methods}{

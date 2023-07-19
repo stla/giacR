@@ -63,11 +63,11 @@ Module.onRuntimeInitialized = function() {
     #' @return The result of the command in a character string.
     #'
     #' @examples
-    #' if(!is.null(chromote::find_chrome())) {
+    #' \donttest{if(!is.null(chromote::find_chrome())) {
     #'   giac <- Giac$new()
     #'   giac$execute("2 + 3/7")
     #'   giac$close()
-    #' }
+    #' }}
     "execute" = function(command) {
       evaluate <- private[["session"]]$Runtime$evaluate(
         sprintf("docaseval('%s')", command)
@@ -90,7 +90,7 @@ Module.onRuntimeInitialized = function() {
     #'
     #' @examples
     #' library(giacR)
-    #' if(!is.null(chromote::find_chrome())) {
+    #' \donttest{if(!is.null(chromote::find_chrome())) {
     #'   giac <- Giac$new()
     #'   giac$implicitization(
     #'     equations = "x = a*cost, y = b*sint",
@@ -99,7 +99,7 @@ Module.onRuntimeInitialized = function() {
     #'     constants = "a, b"
     #'   )
     #'   giac$close()
-    #' }
+    #' }}
     "implicitization" = function(
       equations, relations = "", variables, constants = ""
     ) {
