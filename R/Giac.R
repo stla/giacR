@@ -111,25 +111,24 @@ Module.onRuntimeInitialized = function() {
       relations  <- trimws(strsplit(relations, ",")[[1L]])
       relations  <- vapply(relations, subtraction, character(1L))
       equations  <- trimws(strsplit(equations, ",")[[1L]])
-      generators <- paste0(c(relations, equations), collapse = ", ")
       coordinates <- toString(vapply(equations, function(eq) {
         trimws(strsplit(eq, "=")[[1L]][1L])
       }, character(1L)))
-      symbols <- paste0(symbols, ", ", coordinates)
       equations  <- paste0(
         vapply(equations, subtraction, character(1L)), collapse = ", "
       )
-      equations <- paste0(relations, ", ", equations)
+      equations <- paste0(c(relations, equations), collapse  = ", ")
+      symbols <- paste0(symbols, ", ", coordinates)
       body <- paste0("[", equations, "], [", symbols, "]")
-      command <- sprintf("gbasis(%s)", body)
-      gbasis <- self$execute(command)
+      command <- sprintf("gbasis(%s, plex)", body)
+      gbasis <- giac$execute(command)
       variables <- trimws(strsplit(variables, ",")[[1L]])
       command <- paste0(
         "apply(expr -> ", paste0(vapply(variables, function(s) {
-        sprintf("has(expr, %s)==0", s)
-      }, character(1L)),
-      collapse = " and "), ", ", gbasis, ")")
-      free <- fromJSON(self$execute(command))
+          sprintf("has(expr, %s)==0", s)
+        }, character(1L)),
+        collapse = " and "), ", ", gbasis, ")")
+      free <- fromJSON(giac$execute(command))
       gbasis <- strsplit(sub("\\]$", "", sub("^\\[", "", gbasis)), ",")[[1L]]
       gbasis[free]
     },
