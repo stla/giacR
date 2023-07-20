@@ -5,6 +5,7 @@
 #' @export
 #' @importFrom R6 R6Class
 #' @import chromote
+#' @importFrom processx supervisor_kill
 #' @importFrom jsonlite fromJSON
 Giac <- R6Class(
   "Giac",
@@ -142,7 +143,7 @@ Module.onRuntimeInitialized = function() {
       parent <- private[["session"]]$parent
       . <- private[["session"]]$close()
       success <- quiet(parent$close())
-      processx::supervisor_kill()
+      supervisor_kill()
       success
     }
 
