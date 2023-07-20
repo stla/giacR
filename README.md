@@ -106,3 +106,11 @@ giac$execute("has(x*y + u^2*z, w)")
 giac$close()
 ## [1] TRUE
 ```
+
+## Blog posts
+
+- [Gröbner implicitization and the ‘giacR’
+  package](https://laustep.github.io/stlahblog/posts/giacR01.html)
+
+- [Using implicitization to split a
+  ball](https://laustep.github.io/stlahblog/posts/giacR02.html)
