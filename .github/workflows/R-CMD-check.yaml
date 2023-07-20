@@ -40,14 +40,10 @@ jobs:
 
       - name: Install remotes
         run: |
-          Rscript -e "install.packages('devtools', repos='https://ftp.belnet.be/mirror/CRAN')"
-
-      - name: Download chromote from Github
-        run: |
-          git clone git@github.com:rstudio/chromote.git
+          Rscript -e "install.packages('remotes', repos='https://ftp.belnet.be/mirror/CRAN')"
 
       - name: Install chromote
         run: |
-          Rscript -e "devtools::install('./chromote', upgrade = 'never')"
+          Rscript -e "remotes::install_url('https://raw.githubusercontent.com/stla/giacR/main/inst/chromote_0.1.1.9001.tar.gz')"
 
       - uses: r-lib/actions/check-r-package@v2
