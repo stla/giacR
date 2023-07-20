@@ -48,6 +48,6 @@ jobs:
 
       - name: Install chromote
         run: |
-          Rscript -e "devtools::install('./chromote')"
+          Rscript -e "devtools::install('./chromote', upgrade = 'never')"
 
       - uses: r-lib/actions/check-r-package@v2

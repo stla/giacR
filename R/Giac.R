@@ -60,6 +60,7 @@ Module.onRuntimeInitialized = function() {
 
     #' @description Execute a Giac command.
     #' @param command the command to be executed given as a character string
+    #' @param timeout timeout in milliseconds
     #' @return The result of the command in a character string.
     #'
     #' @examples
@@ -68,9 +69,9 @@ Module.onRuntimeInitialized = function() {
     #'   giac$execute("2 + 3/7")
     #'   giac$close()
     #' }}
-    "execute" = function(command) {
+    "execute" = function(command, timeout = 10000) {
       evaluate <- private[["session"]]$Runtime$evaluate(
-        sprintf("docaseval('%s')", command)
+        sprintf("docaseval('%s')", command), timeout = timeout
       )
       if(evaluate[["result"]][["type"]] != "string") {
         stop("An error occured.")
@@ -82,10 +83,12 @@ Module.onRuntimeInitialized = function() {
     #' @description Gröbner implicitization (see examples)
     #' @param equations comma-separated equations
     #' @param relations comma-separated relations, or an empty string if there
-    #'   is no relation
+    #'   is no relation; the relations between the constants must placed first,
+    #'   followed by the relations between the variables
     #' @param variables comma-separated variables
     #' @param constants comma-separated constants, or an empty string if there
     #'   is no constant
+    #' @param timeout timeout in milliseconds
     #' @return The implicitization of the equations.
     #'
     #' @examples
@@ -101,34 +104,33 @@ Module.onRuntimeInitialized = function() {
     #'   giac$close()
     #' }}
     "implicitization" = function(
-      equations, relations = "", variables, constants = ""
+      equations, relations = "", variables, constants = "", timeout = 10000
     ) {
-      if(nchar(trimws(constants)) > 0L) {
-        symbols <- paste0(variables, ", ", constants)
-      } else{
-        symbols <- variables
-      }
-      relations  <- trimws(strsplit(relations, ",")[[1L]])
-      relations  <- vapply(relations, subtraction, character(1L))
       equations  <- trimws(strsplit(equations, ",")[[1L]])
       coordinates <- toString(vapply(equations, function(eq) {
         trimws(strsplit(eq, "=")[[1L]][1L])
       }, character(1L)))
+      if(nchar(trimws(constants)) > 0L) {
+        symbols <- paste0(variables, ", ", coordinates, ", ", constants)
+      } else{
+        symbols <- paste0(variables, ", ", coordinates)
+      }
+      relations  <- trimws(strsplit(relations, ",")[[1L]])
+      relations  <- vapply(relations, subtraction, character(1L))
       equations  <- paste0(
         vapply(equations, subtraction, character(1L)), collapse = ", "
       )
-      equations <- paste0(c(relations, equations), collapse  = ", ")
-      symbols <- paste0(symbols, ", ", coordinates)
+      equations <- paste0(c(equations, relations), collapse  = ", ")
       body <- paste0("[", equations, "], [", symbols, "]")
-      command <- sprintf("gbasis(%s, plex)", body)
-      gbasis <- giac$execute(command)
+      command <- sprintf("gbasis(%s)", body)
+      gbasis <- self$execute(command, timeout = timeout)
       variables <- trimws(strsplit(variables, ",")[[1L]])
       command <- paste0(
         "apply(expr -> ", paste0(vapply(variables, function(s) {
           sprintf("has(expr, %s)==0", s)
         }, character(1L)),
         collapse = " and "), ", ", gbasis, ")")
-      free <- fromJSON(giac$execute(command))
+      free <- fromJSON(self$execute(command))
       gbasis <- strsplit(sub("\\]$", "", sub("^\\[", "", gbasis)), ",")[[1L]]
       gbasis[free]
     },

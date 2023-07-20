@@ -72,13 +72,15 @@ A \code{Giac} object.
 \subsection{Method \code{execute()}}{
 Execute a Giac command.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Giac$execute(command)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Giac$execute(command, timeout = 10000)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{command}}{the command to be executed given as a character string}
+
+\item{\code{timeout}}{timeout in milliseconds}
 }
 \if{html}{\out{</div>}}
 }
@@ -104,7 +106,13 @@ The result of the command in a character string.
 \subsection{Method \code{implicitization()}}{
 Gröbner implicitization (see examples)
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Giac$implicitization(equations, relations = "", variables, constants = "")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Giac$implicitization(
+  equations,
+  relations = "",
+  variables,
+  constants = "",
+  timeout = 10000
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -113,12 +121,15 @@ Gröbner implicitization (see examples)
 \item{\code{equations}}{comma-separated equations}
 
 \item{\code{relations}}{comma-separated relations, or an empty string if there
-is no relation}
+is no relation; the relations between the constants must placed first,
+followed by the relations between the variables}
 
 \item{\code{variables}}{comma-separated variables}
 
 \item{\code{constants}}{comma-separated constants, or an empty string if there
 is no constant}
+
+\item{\code{timeout}}{timeout in milliseconds}
 }
 \if{html}{\out{</div>}}
 }

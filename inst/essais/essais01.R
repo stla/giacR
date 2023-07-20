@@ -26,8 +26,11 @@ equations  <- paste0(
 )
 equations <- paste0(relations, ", ", equations)
 body <- paste0("[", equations, "], [", symbols, "]")
+
 command <- sprintf("gbasis(%s)", body)
 
+command <-
+  "gbasis([x - (a*cost), y - (b*sint), cost^2 + sint^2 - (1)], [cost, sint, a, b, x, y])"
 gbasis <- giac$execute(command)
 
 #exprs   <- "[x^2 + u, y^2 + v]"
