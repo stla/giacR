@@ -17,6 +17,7 @@ Imports:
     chromote,
     jsonlite,
     pingr,
+    processx,
     R6,
     utils
 SystemRequirements: Chromium-based browser (Google Chrome, Brave, ...)

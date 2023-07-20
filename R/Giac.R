@@ -142,6 +142,7 @@ Module.onRuntimeInitialized = function() {
       parent <- private[["session"]]$parent
       . <- private[["session"]]$close()
       success <- quiet(parent$close())
+      processx::supervisor_kill()
       success
     }
 
