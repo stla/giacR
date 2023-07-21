@@ -18,6 +18,7 @@ here](https://www-fourier.ujf-grenoble.fr/~parisse/giac/doc/en/cascmd_en/cascmd_
 ## Installation
 
 ``` r
+remotes::install_github("rstudio/chromote")
 remotes::install_github("stla/giacR")
 ```
 

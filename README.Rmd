@@ -19,6 +19,7 @@ find the [documentation of Giac here](https://www-fourier.ujf-grenoble.fr/~paris
 ## Installation
 
 ```r
+remotes::install_github("rstudio/chromote")
 remotes::install_github("stla/giacR")
 ```
 
