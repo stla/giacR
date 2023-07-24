@@ -4,8 +4,8 @@ Version: 0.0.0.9000
 Authors@R: 
     c(
       person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre")),
-      person("Renée", "De Graeve", role = "cph"),
-      person("Bernard", "Parisse", role = "cph")
+      person("Renée", "De Graeve", role = "cph", comment = "Giac"),
+      person("Bernard", "Parisse", role = "cph", comment = "Giac")
     )
 Description: 'Giac' is a general purpose symbolic algebra software. It
     powers the graphical interface 'Xcas'. This package allows to execute
