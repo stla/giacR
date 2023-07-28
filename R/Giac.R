@@ -111,19 +111,20 @@ Module.onRuntimeInitialized = function() {
       coordinates <- toString(vapply(equations, function(eq) {
         trimws(strsplit(eq, "=")[[1L]][1L])
       }, character(1L)))
-      if(nchar(trimws(constants)) > 0L) {
-        symbols <- paste0(variables, ", ", coordinates, ", ", constants)
-      } else{
-        symbols <- paste0(variables, ", ", coordinates)
-      }
+      # if(nchar(trimws(constants)) > 0L) {
+      #   symbols <- paste0(variables, ", ", coordinates, ", ", constants)
+      # } else{
+      #   symbols <- paste0(variables, ", ", coordinates)
+      # }
       relations  <- trimws(strsplit(relations, ",")[[1L]])
       relations  <- vapply(relations, subtraction, character(1L))
       equations  <- paste0(
         vapply(equations, subtraction, character(1L)), collapse = ", "
       )
       equations <- paste0(c(equations, relations), collapse  = ", ")
+      symbols <- variables
       body <- paste0("[", equations, "], [", symbols, "]")
-      command <- sprintf("gbasis(%s)", body)
+      command <- sprintf("eliminate(%s)", body)
       gbasis <- self$execute(command, timeout = timeout)
       variables <- trimws(strsplit(variables, ",")[[1L]])
       command <- paste0(

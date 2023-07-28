@@ -12,6 +12,12 @@ relations <- paste0(
 variables <- "cost, sint, cos3t, sin3t"
 constants <- "A, B"
 
+giac$implicitization(
+  equations, relations, variables, constants, timeout = 120000
+)
+
+
+
 command <-
   "gbasis([x - A*cost*cos3t + sint*sin3t, y - A*sint*cos3t - cost*sin3t, z - B*cos3t, cos3t - 4*cost^3+3*cost, sin3t - (4*cost^2-1)*sint, cost^2 + sint^2 - 1, A^2 + B^2 - 1], [x, y, z, A, B, cos3t, cost, sin3t, sint])"
 
