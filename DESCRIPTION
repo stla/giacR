@@ -1,15 +1,18 @@
 Package: giacR
-Title: Interface to the Computer Alegbra System 'Giac'
+Title: Interface to the Computer Algebra System 'Giac'
 Version: 1.0.0
-Authors@R: 
-    c(
-      person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre")),
-      person("Renée", "De Graeve", role = "cph", comment = "Giac"),
-      person("Bernard", "Parisse", role = "cph", comment = "Giac")
-    )
-Description: 'Giac' is a general purpose symbolic algebra software. It
-    powers the graphical interface 'Xcas'. This package allows to execute
-    'Giac' commands in 'R'.
+Authors@R: c(
+    person("Stéphane", "Laurent", , "laurent_step@outlook.fr", role = c("aut", "cre")),
+    person("Renée", "De Graeve", role = "cph",
+           comment = "Giac"),
+    person("Bernard", "Parisse", role = "cph",
+           comment = "Giac")
+  )
+Description: 'Giac'
+    <https://www-fourier.ujf-grenoble.fr/~parisse/giac/doc/en/cascmd_en/cascmd_en.html>
+    is a general purpose symbolic algebra software. It powers the
+    graphical interface 'Xcas'. This package allows to execute 'Giac'
+    commands in 'R'.
 License: GPL-3
 URL: https://github.com/stla/giacR
 BugReports: https://github.com/stla/giacR/issues
@@ -20,6 +23,6 @@ Imports:
     processx,
     R6,
     utils
-SystemRequirements: Chromium-based browser (Google Chrome, Brave, ...)
 Encoding: UTF-8
 RoxygenNote: 7.2.3
+SystemRequirements: Chromium-based browser (Google Chrome, Brave, ...)

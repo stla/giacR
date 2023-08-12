@@ -6,3 +6,4 @@
 ^inst/cleanRd$
 ^inst/Giac$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
