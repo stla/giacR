@@ -5,3 +5,4 @@
 ^README\.Rmd$
 ^inst/cleanRd$
 ^inst/Giac$
+^cran-comments\.md$
