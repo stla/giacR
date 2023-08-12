@@ -14,7 +14,7 @@ License: GPL-3
 URL: https://github.com/stla/giacR
 BugReports: https://github.com/stla/giacR/issues
 Imports: 
-    chromote,
+    chromote (>= 0.1.2),
     jsonlite,
     pingr,
     processx,

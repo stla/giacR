@@ -32,12 +32,4 @@ jobs:
           extra-packages: any::rcmdcheck
           needs: check
 
-      - name: Install remotes
-        run: |
-          Rscript -e "install.packages('remotes', repos='https://ftp.belnet.be/mirror/CRAN')"
-
-      - name: Install chromote
-        run: |
-          Rscript -e "remotes::install_url('https://raw.githubusercontent.com/stla/giacR/main/inst/chromote_0.1.1.9001.tar.gz')"
-
       - uses: r-lib/actions/check-r-package@v2
