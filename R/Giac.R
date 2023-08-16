@@ -68,6 +68,7 @@ Module.onRuntimeInitialized = function() {
     #' \donttest{if(!is.null(chromote::find_chrome())) {
     #'   giac <- Giac$new()
     #'   giac$execute("2 + 3/7")
+    #'   giac$execute("integrate(ln(x))")
     #'   giac$close()
     #' }}
     "execute" = function(command, timeout = 10000) {

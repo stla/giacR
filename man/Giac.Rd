@@ -15,6 +15,7 @@ Creates an object allowing to execute Giac commands.
 \donttest{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$execute("2 + 3/7")
+  giac$execute("integrate(ln(x))")
   giac$close()
 }}
 
@@ -92,6 +93,7 @@ The result of the command in a character string.
 \preformatted{\donttest{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$execute("2 + 3/7")
+  giac$execute("integrate(ln(x))")
   giac$close()
 }}
 }
