@@ -90,12 +90,12 @@ The result of the command in a character string.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\donttest{if(!is.null(chromote::find_chrome())) {
+\preformatted{if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$execute("2 + 3/7")
   giac$execute("integrate(ln(x))")
   giac$close()
-}}
+}
 }
 \if{html}{\out{</div>}}
 
@@ -141,7 +141,7 @@ The implicitization of the equations.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{library(giacR)
-\donttest{if(!is.null(chromote::find_chrome())) {
+if(!is.null(chromote::find_chrome())) {
   giac <- Giac$new()
   giac$implicitization(
     equations = "x = a*cost, y = b*sint",
@@ -150,7 +150,7 @@ The implicitization of the equations.
     constants = "a, b"
   )
   giac$close()
-}}
+}
 }
 \if{html}{\out{</div>}}
 
